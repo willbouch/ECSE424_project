@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <div class="container">
+        <div id="pisse">
+            <div class="header">
+                <h1 class="title">SumAloud</h1>
+            </div>
+            <div class="summary_length">
+                <div class="summary_length_header">
+                    <h2 class="subtitle">Summary Length</h2>
+                    <div class="help-tip">
+                        <p>Short: 10-20% of the original text<br>Medium: 20-30% of the original text<br>Large: 30-40% of
+                            the original text</p>
+                    </div>
+                </div>
+                <div class="options">
+                    <input type="radio" name="length" id="short" value="short" checked />
+                    <label for="short">Short</label>
+                    <input type="radio" name="length" id="medium" value="medium" />
+                    <label for="medium">Medium</label>
+                    <input type="radio" name="length" id="long" value="long" />
+                    <label for="long">Long</label>
+                </div>
+            </div>
+
+            <div class="preview">
+                <div class="preview_and_audio">
+                    <h2 class="subtitle">Preview</h2>
+                    <button id="audio">Play</button>
+                </div>
+                <textarea id="summary_area" class="summary_area" rows="10" cols="33" readonly></textarea>
+            </div>
+
+            <div class="download">
+                <h2 class="subtitle">Download</h2>
+                <div class="download_buttons">
+                    <button id="txt" class="download_button">Text (.txt)</button>
+                    <button id="mp3" class="download_button">Audio (.mp3)</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="confirmation" class="confirmation" style="display: none;">
+            <h2 class="subtitle">Please confirm that you want to download the summary</h2>
+            <div class="download_buttons">
+                <button id="confirm" class="yes_button">Yes</button>
+                <button id="no-confirm" class="no_button">No</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js" charset="utf-8"></script>
+</body>
+
+</html>
