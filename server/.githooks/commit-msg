@@ -1,0 +1,13 @@
+#!/bin/bash
+
+example='feat: add new feature X'
+regex="^(feat|chore|fix)\: ([a-zA-Z0-9_ ]+$)|Merge branch"
+INPUT_FILE=$1
+COMMIT_MSG=`head -n1 $INPUT_FILE`
+if [[ $COMMIT_MSG =~ $regex ]]; then
+     echo 'Commit follows conventions'
+     exit 0
+else
+    echo 'Commit does NOT follow convention. Example : ' "$example"
+    exit 1
+fi
