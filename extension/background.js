@@ -1,3 +1,9 @@
+chrome.runtime.onInstalled.addListener(function (details) {
+    if (details.reason == 'install') {
+        chrome.tabs.create({ url: 'https://docs.google.com/document/d/1JOoE38jFa83XJgSOhtj7gQc2_L2JnH-ZTzRafueZNK8/edit?usp=sharing' })
+    }
+});
+
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.action === 'summary') {
         const xhr = new XMLHttpRequest();
@@ -30,11 +36,26 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         return true
     }
     if (request.action === 'download_txt') {
-        var blob = new Blob([request.text], { type: "text/plain" });
+        var blob = new Blob([request.text], { type: 'text/plain' });
         var url = URL.createObjectURL(blob);
         chrome.downloads.download({
-            url: url // The object URL can be used as download URL
+            url: url
         });
+        return true
+    }
+    if (request.action === 'download_mp3') {
+        var url = './assets/coming_soon.mp3'
+
+        fetch(url)
+            .then(resp => resp.blob())
+            .then(blob => chrome.downloads.download({
+                url: URL.createObjectURL(blob)
+            }));
+
+        return true
+    }
+    if (request.action === 'help') {
+        chrome.tabs.create({ url: 'https://docs.google.com/document/d/1JOoE38jFa83XJgSOhtj7gQc2_L2JnH-ZTzRafueZNK8/edit?usp=sharing' })
         return true
     }
 });

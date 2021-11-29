@@ -30,9 +30,15 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         return true
     }
     if (request.action === 'download_txt') {
-        chrome.runtime.sendMessage({ action: 'download_txt', text: request.text }, (a) => {
-            sendResponse(selectedText)
-        })
+        chrome.runtime.sendMessage({ action: 'download_txt', text: request.text }, (a) => { })
+        return true
+    }
+    if (request.action === 'download_mp3') {
+        chrome.runtime.sendMessage({ action: 'download_mp3' }, (a) => { })
+        return true
+    }
+    if (request.action === 'help') {
+        chrome.runtime.sendMessage({ action: 'help' }, () => { })
         return true
     }
 })
