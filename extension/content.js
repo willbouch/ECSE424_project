@@ -10,10 +10,11 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     }
 
     if (request.action === 'short' || request.action === 'medium' || request.action === 'long') {
+        var numSentences = selectedText.split('.').length - 1
         let length
-        if (request.action === 'short') length = 1
-        if (request.action === 'medium') length = 3
-        if (request.action === 'long') length = 5
+        if (request.action === 'short') length = Math.ceil(numSentences * 0.15)
+        if (request.action === 'medium') length = Math.ceil(numSentences * 0.25)
+        if (request.action === 'long') length = Math.ceil(numSentences * 0.35)
         chrome.runtime.sendMessage(
             { action: 'summary', text: selectedText, length: length },
             (summary) => { sendResponse(summary) }

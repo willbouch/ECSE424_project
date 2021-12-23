@@ -1,6 +1,7 @@
 chrome.runtime.onInstalled.addListener(function (details) {
     if (details.reason == 'install') {
         chrome.tabs.create({ url: 'https://docs.google.com/document/d/1JOoE38jFa83XJgSOhtj7gQc2_L2JnH-ZTzRafueZNK8/edit?usp=sharing' })
+        chrome.runtime.setUninstallURL('https://forms.gle/qnBbhebh2HvGEeSV6')
     }
 });
 
